@@ -1,0 +1,65 @@
+/* Fondo azul pastel para todo el contenedor de Streamlit */
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(135deg, #dce6ff, #ffffff);
+}
+
+/* Texto y tipografía */
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #1e3d8f;
+    margin-top: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+p.sub {
+    text-align: center;
+    color: #555;
+    margin-bottom: 40px;
+    font-size: 1.2rem;
+}
+
+/* Carrusel horizontal */
+.carousel {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 40px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Cards */
+.card {
+    flex: 0 0 280px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    text-align: center;
+    padding: 25px 20px;
+    scroll-snap-align: center;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+.card img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+}
+.card h3 {
+    color: #1e3d8f;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+.card p {
+    color: #555;
+    font-size: 0.95rem;
+}
