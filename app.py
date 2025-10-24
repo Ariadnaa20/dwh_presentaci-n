@@ -271,204 +271,45 @@ def show_page_content(page_name):
     </script>
     """, height=0)
     
-    if page_name == "1_definicion":
-        st.markdown("<h1 style='text-align:center; color:#1e3d8f;'>📊 Definición y propósito del DWH</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align:center; font-size:16px; color:gray;'>Explora cada sección interactuando con los bloques y expanders</p>", unsafe_allow_html=True)
-        st.divider()
-        
-        st.subheader("📝 Introducción")
-        st.write("""
-        Un **Data Warehouse (DWH)** es un sistema que recopila, integra y organiza datos provenientes de distintas fuentes
-        para facilitar la **toma de decisiones estratégicas** en una organización.  
-        Su propósito es centralizar la información para que los analistas puedan obtener **insights valiosos** sin afectar los sistemas operacionales.
-        """)
-        st.divider()
-        
-        st.subheader("✨ Características principales")
-        col1, col2, col3 = st.columns(3)
-        col1.success("🧩 Integración de datos\nCombina información de múltiples sistemas (ERP, CRM, bases de datos).")
-        col2.info("📂 Orientado a temas\nLos datos se organizan según áreas de interés: ventas, clientes, inventario.")
-        col3.warning("⏳ No volátil\nLos datos históricos se mantienen sin alteraciones frecuentes.")
-        
-        col1, col2, col3 = st.columns(3)
-        col1.success("📊 Variedad histórica\nPermite analizar tendencias y comparativas a lo largo del tiempo.")
-        col2.info("⚡ Optimizado para consultas\nDiseñado para responder consultas analíticas complejas.")
-        col3.warning("💡 Escalable\nSe puede ampliar según crecimiento de la organización.")
-        st.divider()
-        
-        with st.expander("💡 Ejemplo práctico: Retail"):
-            st.write("""
-            Imaginemos una empresa de retail que tiene:
-            - 🏬 Un sistema ERP para gestión de inventario.
-            - 📇 Un CRM que almacena datos de clientes.
-            - 🛒 Una plataforma de ventas online.
-            
-            El **DWH** recopila información de todos estos sistemas, organiza los datos por categorías
-            (ventas, clientes, productos), y permite que el equipo de marketing analice:
-            """)
-            col1, col2 = st.columns(2)
-            col1.metric(label="📈 Productos más vendidos", value="5000 unidades/mes")
-            col2.metric(label="👥 Clientes más leales", value="1.200 clientes")
-        
-        st.divider()
-        st.subheader("🎯 Beneficios de usar un DWH")
-        col1, col2 = st.columns(2)
-        col1.success("✅ Decisiones basadas en datos: fundamentadas en información consolidada.")
-        col1.info("⚡ Análisis más rápido: evita consultas directas a sistemas transaccionales lentos.")
-        col2.success("📚 Histórico confiable: mantiene datos para reportes y proyecciones.")
-        col2.info("🚀 Mejora la eficiencia operativa: reduce preparación manual de reportes.")
-        
-        st.divider()
-        with st.expander("📌 Conceptos relacionados"):
-            st.write("""
-            - **ETL (Extract, Transform, Load):** Extraer, transformar y cargar datos al DWH.
-            - **OLAP (Online Analytical Processing):** Análisis multidimensional sobre los datos.
-            - **Data Mart:** Subconjunto del DWH enfocado en un área específica de negocio.
-            - **BI (Business Intelligence):** Herramientas para análisis y visualización de datos.
-            """)
+    # Cargar y ejecutar el contenido de la página correspondiente
+    page_file = pathlib.Path(__file__).parent / "pages" / f"{page_name}.py"
     
-    elif page_name == "2_evolucion":
-        st.markdown("<h1 style='text-align:center; color:#1e3d8f;'>📜 Evolución histórica del DWH</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align:center; font-size:16px; color:gray;'>Explora la evolución desde los primeros sistemas hasta la actualidad</p>", unsafe_allow_html=True)
-        st.divider()
+    if page_file.exists():
+        # Leer el contenido del archivo
+        with open(page_file, 'r', encoding='utf-8') as f:
+            page_content = f.read()
         
-        eras = [
-            {"title": "1980s - DSS", "icon": "📊", "subtitle": "Sistemas de soporte a decisiones",
-             "points": ["Datos de sistemas transaccionales",
-                        "Reportes simples para gerentes",
-                        "Sistemas no estandarizados"]},
-            
-            {"title": "1990s - Bill Inmon & Kimball", "icon": "🏗️", "subtitle": "Nacimiento del DWH",
-             "points": ["Repositorio centralizado, integrado y no volátil",
-                        "Modelado dimensional y Data Marts"]},
-
-            {"title": "2000s - ETL & OLAP", "icon": "💻", "subtitle": "Herramientas comerciales",
-             "points": ["ETL automatizado (Informatica, DataStage)",
-                        "Sistemas OLAP más eficientes"]},
-
-            {"title": "2010s+ - Big Data & Cloud", "icon": "☁️", "subtitle": "Análisis avanzado",
-             "points": ["DWH en la nube (Redshift, Snowflake)",
-                        "Integración con AI/ML",
-                        "Self-service analytics"]}
+        # Eliminar las líneas de configuración de página que causan conflicto
+        lines_to_remove = [
+            "import streamlit as st",
+            "st.set_page_config"
         ]
         
-        st.subheader("📅 Línea temporal interactiva")
-        selected = st.radio("Selecciona una época:", [f"{e['title']} {e['icon']}" for e in eras])
+        content_lines = page_content.split('\n')
+        filtered_lines = []
+        skip_next = False
         
-        for era in eras:
-            if f"{era['title']} {era['icon']}" == selected:
-                st.markdown(f"### {era['title']} {era['icon']}")
-                st.markdown(f"**{era['subtitle']}**")
-                for point in era["points"]:
-                    st.write(f"- {point}")
-                break
+        for line in content_lines:
+            # Skip import streamlit y set_page_config
+            if any(remove in line for remove in lines_to_remove):
+                if "st.set_page_config" in line:
+                    skip_next = True
+                continue
+            if skip_next and line.strip() == "":
+                skip_next = False
+                continue
+            skip_next = False
+            filtered_lines.append(line)
         
-        st.divider()
-        with st.expander("💡 Ejemplo práctico: Análisis de ventas"):
-            st.write("""
-            Antes, una empresa que quería analizar ventas tenía que esperar a que los reportes nocturnos se generaran.  
-            Hoy, con DWH modernos y en la nube:
-            - Analiza datos en tiempo casi real
-            - Compara tendencias históricas
-            - Aplica modelos de Machine Learning para predicciones
-            """)
-        
-        st.subheader("🎯 Impacto de la evolución del DWH")
-        col1, col2 = st.columns(2)
-        col1.success("⚡ Mayor velocidad de análisis")
-        col1.info("📚 Consolidación de datos históricos")
-        col2.success("🔮 Analítica avanzada y predicciones")
-        col2.info("✅ Reducción de errores por manipulación manual")
-    
-    elif page_name == "3_oltp_olap":
-        st.title("⚙️ OLTP vs OLAP")
-        st.write("""
-        En el mundo de la gestión de datos, es esencial distinguir entre **OLTP** (*Online Transaction Processing*) y **OLAP** (*Online Analytical Processing*).  
-        Aunque ambos manejan información, tienen **objetivos y estructuras completamente diferentes** dentro de una organización.
-        """)
-        st.divider()
-        
-        st.subheader("🔹 OLTP — Online Transaction Processing")
-        st.write("""
-        Los sistemas **OLTP** se utilizan en el **día a día operativo** de las empresas.  
-        Están optimizados para manejar muchas transacciones pequeñas en tiempo real.
-        """)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("""
-            **📦 Ejemplos comunes:**
-            - Ventas en tiendas
-            - Reservas de vuelos
-            - Pagos en línea
-            - Control de inventario
-            """)
-        
-        with col2:
-            st.markdown("""
-            **⚙️ Características clave:**
-            - Alta frecuencia de operaciones  
-            - Datos **normalizados** para evitar duplicidades  
-            - Prioridad en **rapidez y consistencia**  
-            - Registra cada transacción individual  
-            """)
-        
-        st.success("🎯 Objetivo: Registrar operaciones en tiempo real de forma eficiente y segura.")
-        st.divider()
-        
-        st.subheader("🔸 OLAP — Online Analytical Processing")
-        st.write("""
-        Los sistemas **OLAP** se usan para **analizar grandes volúmenes de datos históricos** y generar conocimiento estratégico.  
-        A diferencia de OLTP, priorizan la velocidad en las consultas analíticas sobre millones de registros.
-        """)
-        
-        col3, col4 = st.columns(2)
-        with col3:
-            st.markdown("""
-            **📊 Ejemplos comunes:**
-            - Análisis de ventas por región  
-            - Comportamiento de clientes  
-            - Indicadores de rendimiento (KPIs)  
-            - Comparativas anuales  
-            """)
-        
-        with col4:
-            st.markdown("""
-            **🧩 Características clave:**
-            - Datos **históricos y consolidados**  
-            - Estructura **desnormalizada** (modelo estrella o copo de nieve)  
-            - Consultas **complejas y multidimensionales**  
-            - Permite análisis predictivo y estratégico  
-            """)
-        
-        st.info("🎯 Objetivo: Facilitar el análisis y la toma de decisiones empresariales.")
-        st.divider()
-        
-        st.subheader("⚖️ Comparativa rápida")
-        st.markdown("""
-        | **Característica**      | **OLTP** 🧾 | **OLAP** 📈 |
-        |--------------------------|--------------|--------------|
-        | Propósito                | Operaciones diarias | Análisis y decisiones |
-        | Tipo de datos            | Actual y detallado | Histórico y resumido |
-        | Transacciones            | Muchas, pequeñas y rápidas | Pocas, pero complejas |
-        | Estructura               | Normalizada | Desnormalizada |
-        | Ejemplo típico           | Registro de ventas | Reporte de ventas mensuales |
-        """)
-        st.divider()
-        
-        st.subheader("🔗 Relación entre OLTP y OLAP")
-        st.write("""
-        Los **sistemas OLTP alimentan los Data Warehouse (DWH)**, que luego son la base de los entornos **OLAP**.  
-        Esta separación garantiza un **rendimiento óptimo**:  
-        - Los sistemas operativos no se ven afectados por consultas analíticas.  
-        - Los datos se transforman y consolidan antes del análisis.
-        """)
-        st.image("https://upload.wikimedia.org/wikipedia/commons/8/88/OLTP_OLAP_diagram_en.png", 
-                 caption="Esquema simplificado de la relación OLTP ↔ OLAP", use_container_width=True)
-    
+        # Ejecutar el código filtrado
+        try:
+            exec('\n'.join(filtered_lines))
+        except Exception as e:
+            st.error(f"Error al cargar el contenido: {str(e)}")
+            st.code('\n'.join(filtered_lines[:50]))  # Mostrar primeras líneas para debug
     else:
-        st.warning(f"📄 El contenido de esta página ({page_name}) aún no está disponible.")
-        st.info("Esta página está en construcción. Pronto estará disponible con contenido completo.")
+        st.warning(f"📄 El archivo de la página ({page_name}.py) no existe.")
+        st.info("Verifica que el archivo esté en la carpeta 'pages'.")
 
 # Mostrar el modal si está activo
 if st.session_state.show_modal and st.session_state.selected_page:
