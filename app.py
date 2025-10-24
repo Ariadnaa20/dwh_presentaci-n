@@ -7,11 +7,18 @@ st.set_page_config(page_title="Presentación DWH", page_icon="📊", layout="wid
 # Cargar CSS
 static_path = pathlib.Path(__file__).parent / "static"
 css_file = static_path / "styles.css"
+pages_css_file = static_path / "pages_style.css"
+
 if css_file.exists():
     with open(css_file) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 else:
     st.error(f"CSS file not found at {css_file}")
+
+# Cargar CSS para páginas internas
+if pages_css_file.exists():
+    with open(pages_css_file) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Inicializar session state
 if 'show_modal' not in st.session_state:

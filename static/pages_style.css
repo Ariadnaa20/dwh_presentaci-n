@@ -1,0 +1,340 @@
+/* ============================================
+   ESTILOS PARA PÁGINAS INTERNAS (POPUPS) - MODO OSCURO
+   ============================================ */
+
+/* ===== FONDO OSCURO PARA TODO EL MODAL ===== */
+section[data-testid="stDialog"],
+section[data-testid="stDialog"] > div,
+section[data-testid="stDialog"] [data-testid="stVerticalBlock"],
+section[data-testid="stDialog"] .main,
+section[data-testid="stDialog"] [data-testid="stAppViewContainer"],
+section[data-testid="stDialog"] .stApp,
+section[data-testid="stDialog"] .block-container,
+section[data-testid="stDialog"] [data-testid="element-container"] {
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important;
+}
+
+/* Patrón de grid sutil */
+section[data-testid="stDialog"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+section[data-testid="stDialog"] > div {
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== TIPOGRAFÍA ===== */
+section[data-testid="stDialog"] h1 {
+    color: #ffffff !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    padding: 20px 0 !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+    margin-bottom: 30px !important;
+}
+
+section[data-testid="stDialog"] h2 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+    margin-top: 30px !important;
+    margin-bottom: 20px !important;
+}
+
+section[data-testid="stDialog"] h3 {
+    color: #e8eef7 !important;
+    margin-top: 20px !important;
+}
+
+section[data-testid="stDialog"] h4,
+section[data-testid="stDialog"] h5,
+section[data-testid="stDialog"] h6 {
+    color: #d8e3f0 !important;
+}
+
+section[data-testid="stDialog"] p,
+section[data-testid="stDialog"] li {
+    color: #b8c5d6 !important;
+}
+
+section[data-testid="stDialog"] strong,
+section[data-testid="stDialog"] b {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* ===== COLUMNAS CON GLASSMORPHISM ===== */
+section[data-testid="stDialog"] [data-testid="column"] {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 15px !important;
+    padding: 25px 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+    margin: 10px 5px !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stHorizontalBlock"] {
+    gap: 15px !important;
+}
+
+/* ===== EXPANDERS ===== */
+section[data-testid="stDialog"] [data-testid="stExpander"] {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 15px !important;
+    margin: 15px 0 !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stExpander"] summary {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* ===== SUCCESS, INFO, WARNING, ERROR BOXES ===== */
+section[data-testid="stDialog"] [data-testid="stSuccess"],
+section[data-testid="stDialog"] .stSuccess {
+    background: rgba(72, 187, 120, 0.2) !important;
+    border-left: 4px solid #48bb78 !important;
+    color: #9ae6b4 !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 10px !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stInfo"],
+section[data-testid="stDialog"] .stInfo {
+    background: rgba(66, 153, 225, 0.2) !important;
+    border-left: 4px solid #4299e1 !important;
+    color: #90cdf4 !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 10px !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stWarning"],
+section[data-testid="stDialog"] .stWarning {
+    background: rgba(237, 137, 54, 0.2) !important;
+    border-left: 4px solid #ed8936 !important;
+    color: #fbd38d !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 10px !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stError"],
+section[data-testid="stDialog"] .stError {
+    background: rgba(245, 101, 101, 0.2) !important;
+    border-left: 4px solid #f56565 !important;
+    color: #fc8181 !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 10px !important;
+}
+
+/* ===== TABLAS ===== */
+section[data-testid="stDialog"] table {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+section[data-testid="stDialog"] table th {
+    background: rgba(102, 126, 234, 0.3) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    padding: 12px !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+section[data-testid="stDialog"] table td {
+    color: #b8c5d6 !important;
+    padding: 10px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+section[data-testid="stDialog"] table tr:hover td {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ===== TABS ===== */
+section[data-testid="stDialog"] [data-testid="stTabs"] {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    padding: 10px !important;
+}
+
+section[data-testid="stDialog"] button[data-baseweb="tab"] {
+    color: #b8c5d6 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+section[data-testid="stDialog"] button[data-baseweb="tab"][aria-selected="true"] {
+    background: rgba(102, 126, 234, 0.3) !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #667eea !important;
+}
+
+/* ===== CODE BLOCKS ===== */
+section[data-testid="stDialog"] code {
+    background: rgba(0, 0, 0, 0.5) !important;
+    color: #90cdf4 !important;
+    padding: 3px 8px !important;
+    border-radius: 5px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+section[data-testid="stDialog"] pre {
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 10px !important;
+    padding: 15px !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+section[data-testid="stDialog"] pre code {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* ===== DIVIDERS ===== */
+section[data-testid="stDialog"] hr {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    margin: 30px 0 !important;
+}
+
+/* ===== METRICS ===== */
+section[data-testid="stDialog"] [data-testid="stMetric"] {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stMetricLabel"] {
+    color: #b8c5d6 !important;
+    font-size: 0.9rem !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stMetricValue"] {
+    color: #ffffff !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stMetricDelta"] {
+    color: #9ae6b4 !important;
+}
+
+/* ===== RADIO BUTTONS ===== */
+section[data-testid="stDialog"] [data-testid="stRadio"] {
+    background: rgba(255, 255, 255, 0.05) !important;
+    padding: 15px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stRadio"] label {
+    color: #e8eef7 !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    padding: 12px 20px !important;
+    border-radius: 10px !important;
+    margin: 5px 0 !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stRadio"] label:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(102, 126, 234, 0.5) !important;
+}
+
+/* ===== CAPTIONS ===== */
+section[data-testid="stDialog"] .caption,
+section[data-testid="stDialog"] [data-testid="stCaptionContainer"] {
+    color: #7a8a9e !important;
+    font-size: 0.85rem !important;
+}
+
+/* ===== LINKS ===== */
+section[data-testid="stDialog"] a {
+    color: #90cdf4 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(144, 205, 244, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+section[data-testid="stDialog"] a:hover {
+    color: #63b3ed !important;
+    border-bottom-color: #63b3ed !important;
+}
+
+/* ===== BLOCKQUOTES ===== */
+section[data-testid="stDialog"] blockquote {
+    border-left: 4px solid rgba(102, 126, 234, 0.5) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    padding: 15px 20px !important;
+    margin: 20px 0 !important;
+    border-radius: 0 8px 8px 0 !important;
+    color: #b8c5d6 !important;
+}
+
+/* ===== LISTAS ===== */
+section[data-testid="stDialog"] ul,
+section[data-testid="stDialog"] ol {
+    color: #b8c5d6 !important;
+    padding-left: 25px !important;
+}
+
+section[data-testid="stDialog"] ul li::marker {
+    color: #667eea !important;
+}
+
+/* ===== SCROLLBAR PERSONALIZADO ===== */
+section[data-testid="stDialog"] ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+section[data-testid="stDialog"] ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+section[data-testid="stDialog"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+}
+
+section[data-testid="stDialog"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #764ba2 0%, #f093fb 100%);
+}
+
+/* ===== LABELS Y FORMULARIOS ===== */
+section[data-testid="stDialog"] label {
+    color: #e8eef7 !important;
+}
+
+/* ===== MARKDOWN CONTAINERS ===== */
+section[data-testid="stDialog"] [data-testid="stMarkdownContainer"] {
+    color: #b8c5d6 !important;
+}
+
+section[data-testid="stDialog"] [data-testid="stMarkdownContainer"] p {
+    color: #b8c5d6 !important;
+}
