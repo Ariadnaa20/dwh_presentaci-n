@@ -99,7 +99,21 @@ Esta separación garantiza un **rendimiento óptimo**:
 - Los datos se transforman y consolidan antes del análisis.
 """)
 
-st.image("https://upload.wikimedia.org/wikipedia/commons/8/88/OLTP_OLAP_diagram_en.png", caption="Esquema simplificado de la relación OLTP ↔ OLAP", use_container_width=True)
+st.markdown("""
+```
+┌─────────────────┐         ┌──────────────────┐         ┌─────────────────┐
+│  OLTP Systems   │         │   Data Warehouse │         │  OLAP Systems   │
+│                 │         │       (DWH)      │         │                 │
+│  🏪 Ventas      │  ═════> │                  │  ═════> │  📊 Analytics   │
+│  🛒 Inventario  │  ETL    │  📦 Consolidado  │  Query  │  📈 Reports     │
+│  💳 Pagos       │         │  🧹 Limpio       │         │  🎯 Dashboards  │
+│  ✈️ Reservas    │         │  📅 Histórico    │         │  🔍 BI Tools    │
+└─────────────────┘         └──────────────────┘         └─────────────────┘
+   (Operacional)              (Almacenamiento)              (Analítico)
+```
+""")
+
+st.caption("📌 Los datos fluyen desde sistemas operativos (OLTP) → Data Warehouse → Análisis (OLAP)")
 
 st.divider()
 

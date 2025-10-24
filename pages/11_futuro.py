@@ -420,7 +420,7 @@ predictions = [
     },
     {
         "prediccion": "⚡ Latencia Segundos",
-        "prediccion": "80%",
+        "probabilidad": "80%",
         "detalle": "Batch nocturno desaparecerá. Streaming será default. Latencia típica: segundos, no horas."
     },
     {
@@ -654,54 +654,6 @@ Lo que evoluciona es la **implementación técnica** y la **arquitectura**.
 - Enfócate en fundamentos (datos de calidad, modelado, SQL)
 - Los fundamentos +tecnología moderna = éxito
 """)
-
-st.divider()
-
-# --- Recursos ---
-with st.expander("📚 Recursos para Seguir Aprendiendo"):
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown("""
-        **Blogs y Newsletters:**
-        - The Data Engineering Newsletter
-        - Seattle Data Guy
-        - Benn Stancil (Mode)
-        - Locally Optimistic
-        - Data Council Blog
-        
-        **Podcasts:**
-        - Data Engineering Podcast
-        - Analytics Power Hour
-        - The Analytics Engineering Podcast
-        
-        **Conferencias:**
-        - Data Council
-        - Coalesce (dbt)
-        - Snowflake Summit
-        - AWS re:Invent
-        - Google Cloud Next
-        """)
-    
-    with col2:
-        st.markdown("""
-        **Cursos y Certificaciones:**
-        - dbt Learn
-        - Snowflake Hands-On Essentials
-        - Google Cloud Professional Data Engineer
-        - AWS Certified Data Analytics
-        - Databricks Lakehouse Fundamentals
-        
-        **Libros:**
-        - "The Data Warehouse Toolkit" (Kimball) - clásico
-        - "Data Mesh" (Dehghani) - futuro
-        - "Fundamentals of Data Engineering" - moderno
-        
-        **Comunidades:**
-        - dbt Community Slack
-        - Data Engineering Subreddit
-        - Locally Optimistic Slack
-        """)
 
 st.markdown("---")
 st.markdown("""
