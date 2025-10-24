@@ -19,9 +19,13 @@ if 'show_modal' not in st.session_state:
 if 'selected_page' not in st.session_state:
     st.session_state.selected_page = None
 
-# Título y subtítulo
-st.markdown("<h1>📊 Data Warehouse (DWH)</h1>", unsafe_allow_html=True)
-st.markdown('<p class="sub">Explora los temas haciendo clic en las cards</p>', unsafe_allow_html=True)
+# Header moderno con glassmorphism
+st.markdown("""
+<div class="header-container">
+    <h1 class="main-title">📊 Data Warehouse</h1>
+    <p class="subtitle">Explora los fundamentos, arquitectura y tecnologías del mundo DWH</p>
+</div>
+""", unsafe_allow_html=True)
 
 # Definir las cards con sus páginas correspondientes
 cards_data = [
@@ -110,66 +114,78 @@ if 'page' in st.query_params:
         st.session_state.selected_page = page_value
         st.session_state.show_modal = True
 
-# Crear el carrusel HTML con las cards
+# Crear el carrusel HTML con las cards mejoradas
 st.markdown("""
 <div class="carousel">
     <div class="card" id="card-0">
-        <img src="https://cdn-icons-png.flaticon.com/512/2942/2942821.png" alt="icon">
+        <span class="card-number">01</span>
+        <span class="card-icon">📚</span>
         <h3>Definición y propósito del DWH</h3>
         <p>Qué es un Data Warehouse y para qué se utiliza.</p>
     </div>
     <div class="card" id="card-1">
-        <img src="https://cdn-icons-png.flaticon.com/512/2910/2910768.png" alt="icon">
+        <span class="card-number">02</span>
+        <span class="card-icon">⏳</span>
         <h3>Evolución histórica</h3>
         <p>Cómo ha cambiado el concepto de DWH con el tiempo.</p>
     </div>
     <div class="card" id="card-2">
-        <img src="https://cdn-icons-png.flaticon.com/512/2838/2838890.png" alt="icon">
+        <span class="card-number">03</span>
+        <span class="card-icon">⚖️</span>
         <h3>OLTP vs OLAP</h3>
         <p>Diferencias entre sistemas transaccionales y analíticos.</p>
     </div>
     <div class="card" id="card-3">
-        <img src="https://cdn-icons-png.flaticon.com/512/4149/4149723.png" alt="icon">
+        <span class="card-number">04</span>
+        <span class="card-icon">🏗️</span>
         <h3>Arquitectura de un DWH</h3>
         <p>Staging, ETL/ELT y presentación.</p>
     </div>
     <div class="card" id="card-4">
-        <img src="https://cdn-icons-png.flaticon.com/512/2910/2910772.png" alt="icon">
+        <span class="card-number">05</span>
+        <span class="card-icon">⭐</span>
         <h3>Modelado dimensional</h3>
         <p>Estrella, copo de nieve, dimensiones y hechos.</p>
     </div>
     <div class="card" id="card-5">
-        <img src="https://cdn-icons-png.flaticon.com/512/2910/2910778.png" alt="icon">
+        <span class="card-number">06</span>
+        <span class="card-icon">🔷</span>
         <h3>Dimensiones, hechos y SCD</h3>
         <p>Tipos de dimensiones, hechos y Slowly Changing Dimensions.</p>
     </div>
     <div class="card" id="card-6">
-        <img src="https://cdn-icons-png.flaticon.com/512/3003/3003945.png" alt="icon">
+        <span class="card-number">07</span>
+        <span class="card-icon">🛠️</span>
         <h3>Herramientas y tecnologías</h3>
         <p>On-premise y cloud para DWH.</p>
     </div>
     <div class="card" id="card-7">
-        <img src="https://cdn-icons-png.flaticon.com/512/3003/3003940.png" alt="icon">
+        <span class="card-number">08</span>
+        <span class="card-icon">🔄</span>
         <h3>ETL vs ELT</h3>
         <p>Procesos de extracción, transformación y carga de datos.</p>
     </div>
     <div class="card" id="card-8">
-        <img src="https://cdn-icons-png.flaticon.com/512/2921/2921828.png" alt="icon">
+        <span class="card-number">09</span>
+        <span class="card-icon">⚡</span>
         <h3>Rendimiento</h3>
         <p>Particiones e índices para acelerar consultas.</p>
     </div>
     <div class="card" id="card-9">
-        <img src="https://cdn-icons-png.flaticon.com/512/2910/2910776.png" alt="icon">
+        <span class="card-number">10</span>
+        <span class="card-icon">✅</span>
         <h3>Ventajas y limitaciones</h3>
         <p>Fortalezas y debilidades de un DWH.</p>
     </div>
     <div class="card" id="card-10">
-        <img src="https://cdn-icons-png.flaticon.com/512/2910/2910780.png" alt="icon">
+        <span class="card-number">11</span>
+        <span class="card-icon">🔀</span>
         <h3>Comparativa con Data Lake / Lakehouse</h3>
         <p>Relaciones y diferencias con otras arquitecturas.</p>
     </div>
     <div class="card" id="card-11">
-        <img src="https://cdn-icons-png.flaticon.com/512/2910/2910785.png" alt="icon">
+        <span class="card-number">12</span>
+        <span class="card-icon">🔮</span>
         <h3>Futuro del DWH</h3>
         <p>Tendencias y perspectivas futuras.</p>
     </div>
@@ -320,6 +336,14 @@ if st.session_state.show_modal and st.session_state.selected_page:
     if 'page' in st.query_params:
         st.query_params.clear()
 
-# Footer
-st.markdown("---")
-st.markdown("<p style='text-align:center; color:gray;'>Creado por Ariadna, Gabriel, Teo y Oriol | Presentación DWH 2025</p>", unsafe_allow_html=True)
+# Footer mejorado
+st.markdown("""
+<div class="footer">
+    <p style='margin-bottom: 10px; font-size: 1rem;'>
+        ✨ Creado por <strong>Ariadna, Gabriel, Teo y Oriol</strong>
+    </p>
+    <p style='font-size: 0.85rem; opacity: 0.7;'>
+        Presentación Data Warehouse | 2025
+    </p>
+</div>
+""", unsafe_allow_html=True)
