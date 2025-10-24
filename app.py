@@ -233,6 +233,44 @@ components.html(f"""
 def show_page_content(page_name):
     """Muestra el contenido de la página seleccionada en un modal"""
     
+    # CSS para ajustar el ancho del diálogo
+    st.markdown("""
+    <style>
+        section[data-testid="stDialog"] {
+            width: 85vw !important;
+            max-width: 1600px !important;
+        }
+        section[data-testid="stDialog"] > div {
+            width: 85vw !important;
+            max-width: 1600px !important;
+            overflow-y: auto !important;
+            max-height: 90vh !important;
+        }
+        section[data-testid="stDialog"] > div > div {
+            width: 100% !important;
+            max-width: 1600px !important;
+        }
+        [role="dialog"] {
+            width: 85vw !important;
+            max-width: 1600px !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Script separado para scroll al principio
+    components.html("""
+    <script>
+        setTimeout(function() {
+            const dialog = window.parent.document.querySelector('section[data-testid="stDialog"] > div');
+            if (dialog) {
+                dialog.scrollTop = 0;
+            }
+            // También hacer scroll en la página principal
+            window.parent.scrollTo(0, 0);
+        }, 150);
+    </script>
+    """, height=0)
+    
     if page_name == "1_definicion":
         st.markdown("<h1 style='text-align:center; color:#1e3d8f;'>📊 Definición y propósito del DWH</h1>", unsafe_allow_html=True)
         st.markdown("<p style='text-align:center; font-size:16px; color:gray;'>Explora cada sección interactuando con los bloques y expanders</p>", unsafe_allow_html=True)
