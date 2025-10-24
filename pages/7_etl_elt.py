@@ -3,7 +3,7 @@ import streamlit as st
 
 st.set_page_config(page_title="ETL vs ELT", page_icon="🔄", layout="wide")
 
-st.markdown("<h1 style='text-align:center; color:#1e3d8f;'>🔄 ETL vs ELT</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; color:#ffffff;'>🔄 ETL vs ELT</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; font-size:16px; color:gray;'>Procesos de extracción, transformación y carga de datos</p>", unsafe_allow_html=True)
 
 st.divider()

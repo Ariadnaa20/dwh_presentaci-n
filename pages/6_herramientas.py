@@ -3,7 +3,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Herramientas DWH", page_icon="🛠️", layout="wide")
 
-st.markdown("<h1 style='text-align:center; color:#1e3d8f;'>🛠️ Herramientas y Tecnologías</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; color:#ffffff;'>🛠️ Herramientas y Tecnologías</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; font-size:16px; color:gray;'>Plataformas On-Premise y Cloud para Data Warehouses</p>", unsafe_allow_html=True)
 
 st.divider()

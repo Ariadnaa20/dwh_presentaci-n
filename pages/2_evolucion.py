@@ -3,7 +3,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Evolución del DWH", page_icon="📜", layout="wide")
 
-st.markdown("<h1 style='text-align:center; color:#1e3d8f;'>📜 Evolución histórica del DWH</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; color:#ffffff;'>📜 Evolución histórica del DWH</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; font-size:16px; color:gray;'>Desde los primeros sistemas hasta la era del Cloud y Big Data</p>", unsafe_allow_html=True)
 st.divider()
 

@@ -3,7 +3,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Dimensiones y SCD", page_icon="🔷", layout="wide")
 
-st.markdown("<h1 style='text-align:center; color:#1e3d8f;'>🔷 Dimensiones, Hechos y SCD</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; color:#ffffff;'>🔷 Dimensiones, Hechos y SCD</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; font-size:16px; color:gray;'>Slowly Changing Dimensions y gestión de cambios históricos</p>", unsafe_allow_html=True)
 
 st.divider()

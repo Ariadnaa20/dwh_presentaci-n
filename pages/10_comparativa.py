@@ -3,7 +3,7 @@ import streamlit as st
 
 st.set_page_config(page_title="DWH vs Lake vs Lakehouse", page_icon="🔄", layout="wide")
 
-st.markdown("<h1 style='text-align:center; color:#1e3d8f;'>🔄 Data Warehouse vs Data Lake vs Lakehouse</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; color:#ffffff;'>🔄 Data Warehouse vs Data Lake vs Lakehouse</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; font-size:16px; color:gray;'>Comparativa de arquitecturas de datos modernas</p>", unsafe_allow_html=True)
 
 st.divider()

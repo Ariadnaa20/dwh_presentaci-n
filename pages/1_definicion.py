@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="Definición del DWH", page_icon="📊", layout="wide")
 
 # --- Título ---
-st.markdown("<h1 style='text-align:center; color:#1e3d8f;'>📊 Definición y propósito del DWH</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; color:#ffffff;'>📊 Definición y propósito del DWH</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; font-size:16px; color:gray;'>Explora cada sección interactuando con los bloques y expanders</p>", unsafe_allow_html=True)
 
 st.divider()
