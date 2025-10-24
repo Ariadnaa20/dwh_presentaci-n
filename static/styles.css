@@ -44,22 +44,30 @@ p.sub {
     scroll-snap-align: center;
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    user-select: none;
 }
 .card:hover {
     transform: scale(1.06);
     box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    background: #f8f9ff;
+}
+.card:active {
+    transform: scale(1.02);
 }
 .card img {
     width: 70px;
     height: 70px;
     margin-bottom: 15px;
+    pointer-events: none;
 }
 .card h3 {
     color: #1e3d8f;
     font-size: 1.2rem;
     margin-bottom: 8px;
+    pointer-events: none;
 }
 .card p {
     color: #555;
     font-size: 0.95rem;
+    pointer-events: none;
 }
